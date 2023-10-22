@@ -10,7 +10,7 @@
 <form action="/addPerson/" method="POST">
     <label for="name">Person name</label>
     <br>
-    <input type="text" name="name" placeholder="Person name" value="{{ request.form['name'] }}"></input>
+    <input type="text" autocomplete="off" name="name" placeholder="Person name" value="{{ request.form['name'] }}"></input>
     <br>
 
     <label for="person_description">Person description</label>

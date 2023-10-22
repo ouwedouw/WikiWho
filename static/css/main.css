@@ -2,3 +2,21 @@ body{
     margin: 0 auto;
     font-family: sans-serif;
 }
+
+.person{
+    border-style: solid;
+    border-radius: 20px 20px 20px 20px;
+    border-color: rgba(90, 118, 143, 0);
+    background-color: rgb(185, 185, 185);
+    width: 80%;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.person h2{
+    margin: 2px auto;
+}
+
+.person p{
+    margin: 2px auto;
+}
