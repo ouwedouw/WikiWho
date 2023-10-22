@@ -7,7 +7,7 @@
 
 {% block body %}
 <h1>Add person</h1>
-<form action="/addPerson/" method="POST"">
+<form action="/addPerson/" method="POST">
     <label for="name">Person name</label>
     <br>
     <input type="text" name="name" placeholder="Person name" value="{{ request.form['name'] }}"></input>

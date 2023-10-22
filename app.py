@@ -17,6 +17,20 @@ class People(db.Model):
 def index():
     return render_template('index.html')
 
+@app.route('/removePersonBtn/', methods=['GET', 'POST'])
+def removePersonBtn():
+    return render_template('removeperson.html')
+
+@app.route('/removePerson/', methods=['POST', 'GET'])
+def removePerson():
+    if request.method == 'POST':
+        ID = str(request.form['personid'])
+        People.query.filter_by(id=ID).delete()
+        db.session.commit()
+        return render_template('removeperson.html')
+    else:
+        return redirect(url_for('index'))
+
 @app.route('/addPersonBtn/', methods=['GET', 'POST'])
 def addPersonBtn():
     return render_template('addperson.html')
