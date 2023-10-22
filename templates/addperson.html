@@ -1,29 +1,24 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/addperson.css')}}">
 <title>WikiWho</title>
 {% endblock %}
 
 {% block body %}
 <h1>Add person</h1>
-<form method="post">
+<form action="/addPerson/" method="POST"">
     <label for="name">Person name</label>
     <br>
-    <input type="name" name="name"
-           placeholder="Person name"
-           value=""></input>
+    <input type="text" name="name" placeholder="Person name" value="{{ request.form['name'] }}"></input>
     <br>
 
-    <label for="content">Person description</label>
+    <label for="person_description">Person description</label>
     <br>
-    <textarea name="content"
-              placeholder="Post content"
-              rows="15"
-              cols="60"
-              >
-    </textarea>
+    <textarea name="person_description" rows="15" cols="60" 
+    value="" placeholder="Person description">{{ request.form['person_description'] }}</textarea>
     <br>
+
     <button type="submit">Submit</button>
 </form>
 {% endblock %}
