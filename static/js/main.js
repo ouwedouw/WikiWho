@@ -1,7 +1,6 @@
 var search = document.querySelector('#search');
 var results = document.querySelector('#autocompletedatalist');
 var templateContent = document.querySelector('#autocompletetemplate').content;
-console.log(templateContent)
 search.addEventListener('keyup', function handler(event) {
     while (results.children.length) results.removeChild(results.firstChild);
     var inputVal = new RegExp(search.value.trim(), 'i');

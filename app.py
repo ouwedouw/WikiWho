@@ -60,11 +60,16 @@ def addPerson():
             db.session.commit()
             return redirect(url_for('index'))
         
+#search for people
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     if request.method == "POST":
-        searchresult = db.session.execute(select(People).where(People.name == request.form['search'])).scalars().all()
-        return render_template('index.html', people = searchresult)
+        if request.form['search'] == '':
+            return redirect(url_for('index'))
+        else:
+            searchname = request.form['search']
+            searchresult = db.session.execute(select(People).filter(People.name.ilike(searchname))).scalars().all()
+            return render_template('index.html', people = searchresult)
 
 
 with app.app_context():
