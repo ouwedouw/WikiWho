@@ -20,3 +20,7 @@ body{
 .person p{
     margin: 2px auto;
 }
+
+input::-webkit-calendar-picker-indicator {
+    display: none !important;
+}
