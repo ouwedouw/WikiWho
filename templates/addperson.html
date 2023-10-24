@@ -6,19 +6,29 @@
 {% endblock %}
 
 {% block body %}
-<h1>Add person</h1>
-<form action="/addPerson/" method="POST">
-    <label for="name">Person name</label>
-    <br>
-    <input type="text" autocomplete="off" name="name" placeholder="Person name" value="{{ request.form['name'] }}"></input>
-    <br>
+<div class="header">
+    <div class="title">
+        <a href="/"><h1>WikiWho</h1></a>
+    </div>
+</div>
 
-    <label for="person_description">Person description</label>
-    <br>
-    <textarea name="person_description" rows="15" cols="60" 
-    value="" placeholder="Person description">{{ request.form['person_description'] }}</textarea>
-    <br>
+<div class="content">
+    <div class="addpersonstuff">
+        <h2>Add person</h2>
+        <form action="/addPersonFunc" method="POST">
+            <label for="name">Person name</label>
+            <br>
+            <input type="text" autocomplete="off" name="name" placeholder="Person name" value="{{ request.form['name'] }}"></input>
+            <br>
 
-    <button type="submit">Submit</button>
-</form>
+            <label for="person_description">Person description</label>
+            <br>
+            <textarea name="person_description" rows="15" cols="60" 
+            value="" placeholder="Person description">{{ request.form['person_description'] }}</textarea>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
 {% endblock %}

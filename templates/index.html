@@ -8,17 +8,17 @@
 {% block body %}
 <div class="header">
     <div class="title">
-        <h1>WikiWho</h1>
+        <a href="/"><h1>WikiWho</h1></a>
     </div>
     <div class="navaddperson">
-        <form action="/addPersonBtn/" method="POST">
+        <form action="/addPerson" method="POST">
             <input type="submit" value="Add person">
         </form>
     </div>
     <div class="navsearch">
         <form action="/search" method="post">
             <template id="autocompletetemplate">
-                {% for person in people %}
+                {% for person in totpeople %}
                 <option>{{ person.name }}</option>
                 {% endfor %}
             </template>
@@ -31,8 +31,6 @@
 </div>
 
 <div class="content">
-    
-
     {% for person in people %}
         <div class='person'>
             <h2 class="personname">{{ person.name }}</h2>

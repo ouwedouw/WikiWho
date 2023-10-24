@@ -17,8 +17,8 @@ class People(db.Model):
 #go to main page
 @app.route('/')
 def index():
-    people = People.query.all()
-    return render_template('index.html', people=people)
+    people = db.session.execute(select(People)).scalars().all()
+    return render_template('index.html', people=people, totpeople = people)
 
 #go to admin page
 @app.route('/admin')
@@ -29,20 +29,20 @@ def admin():
 @app.route('/removePerson/', methods=['POST', 'GET'])
 def removePerson():
     if request.method == 'POST':
-        ID = str(request.form['personid'])
-        People.query.filter_by(id=ID).delete()
+        personname = str(request.form['personname'])
+        db.session.execute(delete(People).where(People.name.ilike(personname)))
         db.session.commit()
         return render_template('admin.html')
     else:
         return redirect(url_for('index'))
 
 #go to add person page
-@app.route('/addPersonBtn/', methods=['GET', 'POST'])
+@app.route('/addPerson', methods=['GET', 'POST'])
 def addPersonBtn():
     return render_template('addperson.html')
 
 #add person functionality
-@app.route('/addPerson/', methods=['POST', 'GET'])
+@app.route('/addPersonFunc', methods=['POST', 'GET'])
 def addPerson():
     if request.method == 'POST':
         personname = str(request.form['name'])
@@ -67,9 +67,10 @@ def search():
         if request.form['search'] == '':
             return redirect(url_for('index'))
         else:
+            totalpeople = db.session.execute(select(People)).scalars().all()
             searchname = request.form['search']
             searchresult = db.session.execute(select(People).filter(People.name.ilike(searchname))).scalars().all()
-            return render_template('index.html', people = searchresult)
+            return render_template('index.html', people = searchresult, totpeople = totalpeople)
 
 
 with app.app_context():

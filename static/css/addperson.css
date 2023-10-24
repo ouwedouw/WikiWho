@@ -3,7 +3,90 @@
 
 body{
     margin: 0 auto;
-    font-family: 'Pixelify-sans', sans-serif;
+    font-size: 21px;
+    font-family: 'Alumni Sans', sans-serif;
+    overflow:visible;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+.content{
+    margin: 0 auto;
+    margin-left: 1.83%;
+}
+
+.addpersonstuff{
+    width: fit-content;
+    clear: both; 
+    min-width: none;
+    border-style: solid;
+    border-radius: 20px 20px 20px 20px;
+    border-color: rgba(90, 118, 143, 0);
+    background-color: rgb(185, 185, 185);
+    max-width: 100%;
+    padding: 5px 10px;
+}
+
+.addpersonstuff button{
+    font-family: 'Alumni Sans', 'sans-serif';
+    font-weight: 500;
+    font-size: 16px;
+    border-style: solid;
+    border-radius: 33px;
+    border-color: rgba(90, 118, 143, 0);
+}
+
+.addpersonstuff button:hover{
+    background-color: rgb(223, 223, 223);
+}
+
+.header{
+    overflow: hidden;
+    text-align: center;
+    min-height: 68px;
+    width: 100%;
+    background-color: rgb(179, 179, 179);
+    list-style-type: none;
+    margin: 0 0 20px 0;
+    padding: 0 auto;
+}
+
+.header > div{
+    position: relative;
+    display: inline;
+    float: right;
+}
+
+.title{
+    display: block;
+    padding-left: 1.83%;
+    margin: 0 auto;
+    float: left !important;
+}
+
+.title a{
+    cursor: default;
+    color: black;
+    text-decoration:none; 
+}
+
+h1{
+    margin: 0 auto;
+    font-size: 56px;
+    font-weight: 900;
+    font-family: 'Pixelify Sans', sans-serif;
+}
+
+h2{
+    margin: 0 auto;
+}
+
+input{
+    font-weight: 600;
+    font-size: inherit;
+    font-family: inherit;
 }
 
 textarea{

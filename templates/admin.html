@@ -6,11 +6,11 @@
 {% endblock %}
 
 {% block body %}
-<h1>Admin screen</h1>
+<h2>Admin screen</h2>
 <form action="/removePerson/" method="POST">
-    <label for="personid">Person ID</label>
+    <label for="personname">Person name</label>
     <br>
-    <input type="text" name="personid" placeholder="Person ID" value="{{ request.form['id'] }}"></input>
+    <input type="text" name="personname" placeholder="Person name" value="{{ request.form['personname'] }}"></input>
     <br>
     <button type="submit">Submit</button>
 </form>
