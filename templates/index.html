@@ -6,25 +6,32 @@
 {% endblock %}
 
 {% block body %}
+<div class="header">
+    <div class="title">
+        <h1>WikiWho</h1>
+    </div>
+    <div class="navaddperson">
+        <form action="/addPersonBtn/" method="POST">
+            <input type="submit" value="Add person">
+        </form>
+    </div>
+    <div class="navsearch">
+        <form action="/search" method="post">
+            <template id="autocompletetemplate">
+                {% for person in people %}
+                <option>{{ person.name }}</option>
+                {% endfor %}
+            </template>
+            <input type="text" name="search" autocomplete="off" list="autocompletedatalist" id="search" placeholder="Who are you looking for?" value="{{ request.form['search'] }}">
+            <datalist id="autocompletedatalist"></datalist>
+            <input type="submit" value="Search">
+            <script src="{{url_for('static', filename='js/main.js')}}"></script>
+        </form>
+    </div>
+</div>
+
 <div class="content">
-    <h1>WikiWho</h1>
-    <form action="/search" method="post">
-        <template id="autocompletetemplate">
-            {% for person in people %}
-            <option>{{ person.name }}</option>
-            {% endfor %}
-        </template>
-        <input type="text" name="search" autocomplete="off" list="autocompletedatalist" id="search" placeholder="Who are you looking for?" value="{{ request.form['search'] }}">
-        <datalist id="autocompletedatalist"></datalist>
-        <input type="submit" value="Search">
-        <script src="{{url_for('static', filename='js/main.js')}}"></script>
-    </form>
-
-    <form action="/addPersonBtn/" method="POST">
-        <input type="submit" value="Add person">
-    </form>
-
-    <li><a href="{{ url_for('admin')}}">Admin</a></li>
+    
 
     {% for person in people %}
         <div class='person'>
